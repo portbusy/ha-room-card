@@ -39,6 +39,10 @@ describe('getChipColor', () => {
   it('action on usa color_on da config', () => expect(getChipColor('action', 'on', { color_on: 'amber' })).toBe('amber'));
   it('sensor on usa color_on', () => expect(getChipColor('sensor', 'on', { color_on: 'orange', color_off: 'grey' })).toBe('orange'));
   it('sensor off usa color_off', () => expect(getChipColor('sensor', 'off', { color_on: 'orange', color_off: 'grey' })).toBe('grey'));
+  it('switch on senza color_on → amber (default)', () => expect(getChipColor('switch', 'on', {})).toBe('amber'));
+  it('action on senza color_on → amber (default)', () => expect(getChipColor('action', 'on', {})).toBe('amber'));
+  it('sensor on senza color_on → orange (default)', () => expect(getChipColor('sensor', 'on', {})).toBe('orange'));
+  it('sensor off senza color_off → grey (default)', () => expect(getChipColor('sensor', 'off', {})).toBe('grey'));
   it('plant ok → green', () => expect(getChipColor('plant', 'ok', {})).toBe('green'));
   it('plant problem → red', () => expect(getChipColor('plant', 'problem', {})).toBe('red'));
 });
