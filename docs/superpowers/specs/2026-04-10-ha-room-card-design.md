@@ -167,12 +167,15 @@ ha-room-card/
 - `static getStubConfig()` → config di esempio minimale
 
 **Metodi interni:**
-- `_render()` — `this.innerHTML = renderHeader(config, hass) + '<div class="rrc-chips"></div>'`, poi `_attachChips()`
-- `_attachChips()` — istanzia o aggiorna `mushroom-chips-card` nel container `.rrc-chips`
+- `_render()` — azzera `this._mushroomEl = null`, poi `this.innerHTML = renderHeader(config, hass) + '<div class="rrc-chips"></div>'`, poi `_attachChips()` (che ricrea il riferimento)
+- `_attachChips()` — se `_mushroomEl` è null, crea e appende un nuovo `mushroom-chips-card`; altrimenti aggiorna solo `.hass` e chiama `setConfig` se la config chip è cambiata
 - `_evaluateVisibility()` — chiama `evaluateVisibility()` e imposta `this.style.display`
 
 **Ottimizzazione re-render:**
-Alla prima chiamata `setConfig`, viene costruita la lista `_watchedEntities`. Ad ogni `set hass`, viene confrontato solo il sottoinsieme di stati rilevanti. Il render completo avviene solo se almeno uno stato è cambiato. La `mushroom-chips-card` riceve solo aggiornamenti `.hass` (non viene re-creata).
+Alla prima chiamata `setConfig`, viene costruita la lista `_watchedEntities`. Ad ogni `set hass`:
+- Se nessuno stato rilevante è cambiato → aggiorna solo `this._mushroomEl.hass` (nessun render)
+- Se almeno uno stato è cambiato → `_render()` completo (azzera e ricrea DOM + mushroom)
+- Visibilità valutata ad ogni `set hass` indipendentemente dal render
 
 **No shadow DOM:** tutto viene scritto direttamente su `this`, compatibile con `card-mod`.
 
