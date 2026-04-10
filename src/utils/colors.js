@@ -12,7 +12,7 @@ const COLOR_MAP = {
   blue: COLORS.blue,
   green: COLORS.green,
   red: COLORS.red,
-  grey: 'rgba(255,255,255,0.35)',
+  grey: COLORS.dimmed,
   white: 'white',
 };
 
@@ -63,13 +63,11 @@ export function getHeaderSensorColor(sensor, hass) {
       return state === 'on' ? COLORS.active : COLORS.red;
     case 'finestra':
       return COLORS.active;
-    case 'extra': {
-      const entityState = hass.states[sensor.entity]?.state;
-      if (sensor.color_on_cool && entityState === 'cool') {
+    case 'extra':
+      if (sensor.color_on_cool && state === 'cool') {
         return resolveColorName(sensor.color_on_cool);
       }
       return resolveColorName(sensor.color_on || 'orange');
-    }
     default:
       return 'white';
   }
