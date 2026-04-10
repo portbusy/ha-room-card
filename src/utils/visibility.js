@@ -27,10 +27,7 @@ function evaluateCondition(condition, hass) {
       const personStates = Object.entries(hass.states)
         .filter(([id]) => id.startsWith('person.') || id.startsWith('device_tracker.'))
         .map(([, s]) => s.state);
-      return locations.some(loc => {
-        if (loc === 'not_home') return personStates.some(s => s !== 'home');
-        return personStates.some(s => s === loc);
-      });
+      return locations.some(loc => personStates.some(s => s === loc));
     }
     default:
       return true;
