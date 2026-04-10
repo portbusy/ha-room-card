@@ -18,6 +18,10 @@ describe('getChipIcon', () => {
     expect(getChipIcon('sensor', 'off', { icon_on: 'mdi:window-open-variant', icon_off: 'mdi:window-closed-variant' }))
       .toBe('mdi:window-closed-variant');
   });
+  it('switch senza config.icon → mdi:toggle-switch (default)', () => expect(getChipIcon('switch', 'on', {})).toBe('mdi:toggle-switch'));
+  it('action senza config.icon → mdi:toggle-switch (default)', () => expect(getChipIcon('action', 'on', {})).toBe('mdi:toggle-switch'));
+  it('sensor on senza config.icon_on → mdi:information (default)', () => expect(getChipIcon('sensor', 'on', {})).toBe('mdi:information'));
+  it('sensor off senza config.icon_off → mdi:information-off (default)', () => expect(getChipIcon('sensor', 'off', {})).toBe('mdi:information-off'));
 });
 
 describe('getHeaderIcon', () => {
@@ -26,5 +30,6 @@ describe('getHeaderIcon', () => {
   it('porta on → door-open', () => expect(getHeaderIcon('porta', 'on')).toBe('mdi:door-open'));
   it('porta off → door-closed', () => expect(getHeaderIcon('porta', 'off')).toBe('mdi:door-closed'));
   it('finestra → window-open-variant', () => expect(getHeaderIcon('finestra', 'on')).toBe('mdi:window-open-variant'));
+  it('finestra off → window-open-variant (sempre visibile se chiamata)', () => expect(getHeaderIcon('finestra', 'off')).toBe('mdi:window-open-variant'));
   it('tipo sconosciuto → null', () => expect(getHeaderIcon('unknown', 'on')).toBeNull());
 });
