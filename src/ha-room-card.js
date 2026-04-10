@@ -93,6 +93,9 @@ class HaRoomCard extends HTMLElement {
 
   _render() {
     if (!this._config || !this._hass) return;
+    if (this._mushroomEl) {
+      this._mushroomEl.remove();
+    }
     this._mushroomEl = null;
     const accent = this._config.accent || '#4E8062';
     this.innerHTML = `${renderHeader(this._config, this._hass)}<div class="rrc-chips" style="background:linear-gradient(120deg,${accent}1F 0%,${accent}0A 100%);border-radius:0 0 22px 22px;padding:8px 14px 12px 14px;"></div>`;
@@ -118,6 +121,11 @@ class HaRoomCard extends HTMLElement {
 
     header.addEventListener('pointerup', () => {
       clearTimeout(holdTimer);
+    });
+
+    header.addEventListener('pointercancel', () => {
+      clearTimeout(holdTimer);
+      holdFired = false;
     });
 
     header.addEventListener('click', () => {

@@ -3,5 +3,6 @@
   "description": "A beautiful room card for Home Assistant with gradient header, sensor info row and control chips",
   "render_readme": true,
   "filename": "ha-room-card.js",
-  "content_in_root": false
+  "content_in_root": false,
+  "homeassistant": "2023.1.0"
 }

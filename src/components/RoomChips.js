@@ -1,3 +1,7 @@
+function escapeHtml(str) {
+  return String(str ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 import { getChipIcon } from '../utils/icons.js';
 import { getChipColor } from '../utils/colors.js';
 
@@ -49,7 +53,7 @@ export function renderNativeChips(chips, hass, accent) {
     const state = getChipState(chip, hass);
     const icon = getChipIcon(chip.type, state, chip);
     const isProblem = chip.type === 'plant' && state !== 'ok';
-    const label = chip.name + (isProblem ? ' ⚠' : '');
+    const label = escapeHtml(chip.name) + (isProblem ? ' ⚠' : '');
     return `<span class="rrc-chip" data-entity="${chip.entity}" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:${accent}26;border:1px solid ${accent}66;font-size:0.82em;color:var(--primary-text-color);cursor:pointer;"><ha-icon icon="${icon}" style="--mdc-icon-size:16px;"></ha-icon>${label}</span>`;
   }).join('');
 }
