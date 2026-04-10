@@ -1,5 +1,7 @@
 # ha-room-card
 
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
+
 A custom Home Assistant card with a colored gradient header, configurable sensor info row, and quick-control chips.
 
 ## Dependencies
@@ -12,7 +14,12 @@ A custom Home Assistant card with a colored gradient header, configurable sensor
 ## Installation
 
 ### HACS
-Add this repository to HACS as a custom repository (Lovelace), then install **HA Room Card**.
+
+Click the button below to open your Home Assistant and add this repository directly:
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=portbusy&repository=ha-room-card&category=lovelace)
+
+Or manually: HACS → Custom Repositories → paste `https://github.com/portbusy/ha-room-card` → category **Lovelace** → Install.
 
 ### Manual
 1. Copy `dist/ha-room-card.js` to `config/www/ha-room-card.js`
