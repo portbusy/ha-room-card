@@ -1,4 +1,5 @@
 export function getChipIcon(type, state, config) {
+  config = config || {};
   switch (type) {
     case 'light':
       return state === 'on' ? 'mdi:lightbulb' : 'mdi:lightbulb-outline';

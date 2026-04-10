@@ -22,6 +22,7 @@ describe('getChipIcon', () => {
   it('action senza config.icon → mdi:toggle-switch (default)', () => expect(getChipIcon('action', 'on', {})).toBe('mdi:toggle-switch'));
   it('sensor on senza config.icon_on → mdi:information (default)', () => expect(getChipIcon('sensor', 'on', {})).toBe('mdi:information'));
   it('sensor off senza config.icon_off → mdi:information-off (default)', () => expect(getChipIcon('sensor', 'off', {})).toBe('mdi:information-off'));
+  it('config null non lancia errori', () => expect(() => getChipIcon('switch', 'on', null)).not.toThrow());
 });
 
 describe('getHeaderIcon', () => {
