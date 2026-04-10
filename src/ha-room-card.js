@@ -2,6 +2,7 @@ import { renderHeader } from './components/RoomHeader.js';
 import { buildMushroomConfig, renderNativeChips } from './components/RoomChips.js';
 import { handleAction } from './utils/actions.js';
 import { evaluateVisibility } from './utils/visibility.js';
+import './editor/HaRoomCardEditor.js';
 
 class HaRoomCard extends HTMLElement {
   constructor() {
@@ -37,6 +38,10 @@ class HaRoomCard extends HTMLElement {
 
   getCardSize() {
     return 3;
+  }
+
+  static getConfigElement() {
+    return document.createElement('ha-room-card-editor');
   }
 
   static getStubConfig() {
