@@ -50,6 +50,7 @@
 {
   "name": "ha-room-card",
   "version": "1.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "build": "rollup -c",
@@ -58,9 +59,10 @@
     "test:watch": "vitest"
   },
   "devDependencies": {
-    "rollup": "^4.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-terser": "^0.4.0",
+    "jsdom": "^23.0.0",
+    "rollup": "^4.0.0",
     "vitest": "^1.0.0"
   }
 }
