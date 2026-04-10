@@ -1,9 +1,9 @@
+import { getHeaderIcon } from '../utils/icons.js';
+import { isExtraActive, getHeaderSensorColor, COLORS } from '../utils/colors.js';
+
 function escapeHtml(str) {
   return String(str ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
-
-import { getHeaderIcon } from '../utils/icons.js';
-import { isExtraActive, getHeaderSensorColor, COLORS } from '../utils/colors.js';
 
 function iconSpan(icon, color) {
   return `<span style="display:inline-flex;align-items:center;"><ha-icon icon="${icon}" style="--mdc-icon-size:18px;color:${color};"></ha-icon></span>`;

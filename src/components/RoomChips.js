@@ -1,9 +1,9 @@
+import { getChipIcon } from '../utils/icons.js';
+import { getChipColor } from '../utils/colors.js';
+
 function escapeHtml(str) {
   return String(str ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
-
-import { getChipIcon } from '../utils/icons.js';
-import { getChipColor } from '../utils/colors.js';
 
 function getChipState(chip, hass) {
   return hass?.states?.[chip.entity]?.state ?? 'unavailable';
