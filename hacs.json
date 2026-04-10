@@ -1,6 +1,5 @@
 {
   "name": "HA Room Card",
-  "description": "A beautiful room card for Home Assistant with gradient header, sensor info row and control chips",
   "render_readme": true,
   "filename": "ha-room-card.js",
   "content_in_root": false,
